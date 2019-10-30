@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Mass EMail Sender</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		html {
+			margin: 0;
+		}
+
+		#header {
+			text-align: center;
+		}
+
+		.container {
+			max-width: 700px;
+		}
+
+		.form-row {
+			display: flex;
+			justify-content: center;
+
+		}
+	</style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container">
+		<div id="header" class="container-fluid">
+			<p>
+				<h1>Mass Email Sender</h1>
+			</p>
+		</div>
+		<div>
+			<div class="row form-row">
+				<div class="form-group col-4">
+					<label for="name">Name: </label>
+					<input type="text" class="form-control" name="name" placeholder="First Name" id="name">
+
+				</div>
+				<div class="form-grop col-4">
+					<label for="email"> Email</label>
+					<input type="email" class="form-control" name="email" placeholder="Enter The Recepient's Email here"
+						id="email">
+
+
+				</div>
+			</div>
+			<div class="form-row row">
+				<div class="col-3">
+					<button class="btn btn-primary" type="submit" onclick="sendEmails()">
+						Send The Emails!
+					</button>
+
+				</div>
+				<div class="col-3">
+					<input class="btn" type="file">
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function sendEmails() {
+			console.log(document.getElementById("email").value);
+		}
+	</script>
+
+</body>
+
+</html>
