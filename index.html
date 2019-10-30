@@ -60,14 +60,15 @@
 				<div class="col-3">
 					<input class="btn" type="file">
 				</div>
-
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
 		function sendEmails() {
-			console.log(document.getElementById("email").value);
+			let emails = document.getElementById("email").value.split(" ");
+			
 		}
+
 	</script>
 
 </body>
