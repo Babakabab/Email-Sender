@@ -30,7 +30,7 @@ const emailBody = fs.readFileSync('public/email-template.html');
 const email = ""
 const msg = {
     from: 'babakjahangiri123@gmail.com',
-    to: 'babak_jahangiry@yahoo.com',
+    // to: 'babak_jahangiry@yahoo.com',
     subject: 'Hemenis ile Hemenis',
     html:emailBody
 };
@@ -40,7 +40,18 @@ app.get('/',(req,res)=>{
     res.render('index.html');
 });
 app.post('/emails',upload.single('template'),(req,res)=>{
-    const emailAddresses = req.body('email').split(" ");
+    const emailAddresses = req.body['email'].split(" ");
+    emailAddresses.forEach(to => {
+        msg.to = to;
+        transporter.sendMail(msg,(err,info)=>{
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log(info);
+            }
+        });
+    });
     console.log(emailAddresses);
     
 
