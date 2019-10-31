@@ -1,0 +1,23 @@
+{
+  "name": "email-node",
+  "version": "1.0.0",
+  "description": "This app is meant to receive a number of email adresses, and send templates to them, making our employees' lives easier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Babakabab/Email-Sender.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Babakabab/Email-Sender/issues"
+  },
+  "homepage": "https://github.com/Babakabab/Email-Sender#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
