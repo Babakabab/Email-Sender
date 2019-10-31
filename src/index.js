@@ -5,6 +5,7 @@ const express = require('express'),
       nodemailer = require('nodemailer'),
       bodyParser = require('body-parser'),
       multer = require('multer'),
+      fs = require('fs'),
       router = express.Router();
 
 
@@ -25,11 +26,12 @@ let transporter = nodemailer.createTransport({
         pass:'Iusethisforpython'
     }
 });
+const emailBody = fs.readFileSync('public/email-template.html');
 const mailOptions = {
     from: 'babakjahangiri123@gmail.com',
     to: 'babak_jahangiry@yahoo.com',
     subject: 'THIS IS A TEST MOFO!',
-    html:'<p> WHATEVA MAYYNN</p>'
+    html:emailBody
 };
 
 
@@ -37,7 +39,14 @@ app.get('/',(req,res)=>{
     res.render('index.html');
 });
 app.post('/emails',upload.single('template'),(req,res)=>{
-    console.log(req.body);
+    transporter.sendMail(mailOptions,(err,info)=>{
+        if (err){
+            console.log(error);
+        }
+        else{
+            console.log(info);
+        }
+    });
 
 });
 
