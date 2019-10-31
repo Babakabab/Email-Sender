@@ -19,27 +19,34 @@ const upload = multer({
     'dest':'images'
 });
 
-let transporter = nodemailer.createTransport({
-    service:'gmail',
-    auth:{
-        user:'babakjahangiri123@gmail.com',
-        pass:'Iusethisforpython'
-    }
-});
-const emailBody = fs.readFileSync('public/email-template.html');
-const email = ""
-const msg = {
-    from: 'babakjahangiri123@gmail.com',
-    // to: 'babak_jahangiry@yahoo.com',
-    subject: 'Hemenis ile Hemenis',
-    html:emailBody
-};
+
+
 
 
 app.get('/',(req,res)=>{
     res.render('index.html');
 });
 app.post('/emails',upload.single('template'),(req,res)=>{
+    let user = req.body['username'];
+    let password = req.body['password'];
+
+    let transporter = nodemailer.createTransport({
+
+        service:'Yandex',
+        auth:{
+            user:user,
+            pass:password
+        }
+    });
+    const emailBody = fs.readFileSync('public/email-template.html');
+
+    const msg = {
+        from:user,
+        // from: 'babakjahangiri123@gmail.com',
+        // to: 'babak_jahangiry@yahoo.com',
+        subject: 'Hemenis ile Hemenis',
+        html:emailBody
+    };
     const emailAddresses = req.body['email'].split(" ");
     emailAddresses.forEach(to => {
         msg.to = to;
@@ -52,7 +59,7 @@ app.post('/emails',upload.single('template'),(req,res)=>{
             }
         });
     });
-    console.log(emailAddresses);
+    console.log('password',password);
     
 
 
