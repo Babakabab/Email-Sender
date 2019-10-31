@@ -4,6 +4,7 @@
   "description": "This app is meant to receive a number of email adresses, and send templates to them, making our employees' lives easier",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,12 @@
   },
   "homepage": "https://github.com/Babakabab/Email-Sender#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^2.4.2",
     "express": "^4.17.1",
-    "path": "^0.12.7"
+    "multer": "^1.4.2",
+    "nodemailer": "^6.3.1",
+    "path": "^0.12.7",
+    "router": "^1.3.3"
   }
 }
