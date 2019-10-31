@@ -1,0 +1,14 @@
+function sendEmails() {
+            let emailForm = document.getElementById("email-form");
+            let formData = new FormData(emailForm);
+            fetch('/emails',{
+                method:'POST',
+                body:formData
+            })
+            .then(
+                alert(response,'Emails successfullt sent!')
+
+            )
+            .catch((error)=>console.log("Error:",error));
+			
+		}
