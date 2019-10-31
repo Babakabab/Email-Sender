@@ -27,10 +27,11 @@ let transporter = nodemailer.createTransport({
     }
 });
 const emailBody = fs.readFileSync('public/email-template.html');
-const mailOptions = {
+const email = ""
+const msg = {
     from: 'babakjahangiri123@gmail.com',
     to: 'babak_jahangiry@yahoo.com',
-    subject: 'THIS IS A TEST MOFO!',
+    subject: 'Hemenis ile Hemenis',
     html:emailBody
 };
 
@@ -39,14 +40,19 @@ app.get('/',(req,res)=>{
     res.render('index.html');
 });
 app.post('/emails',upload.single('template'),(req,res)=>{
-    transporter.sendMail(mailOptions,(err,info)=>{
-        if (err){
-            console.log(error);
-        }
-        else{
-            console.log(info);
-        }
-    });
+    const emailAddresses = req.body('email').split(" ");
+    console.log(emailAddresses);
+    
+
+
+    // transporter.sendMail(mailOptions,(err,info)=>{
+    //     if (err){
+    //         console.log(error);
+    //     }
+    //     else{
+    //         console.log(info);
+    //     }
+    // });
 
 });
 
