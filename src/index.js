@@ -38,18 +38,32 @@ app.post('/emails',upload.single('template'),(req,res)=>{
             pass:password
         }
     });
-    const emailBody = fs.readFileSync('public/email-template.html');
+    const emailBody = fs.readFile(req.files.path, (err,data)=>{
+        if(err){
+            console.log(err);
+
+        }
+        else{
+            console.log("Success");
+        }
+    });
+    fs.unlink(req.files.path,(err)=>{
+        if(err){
+            throw err;
+        }
+        else{
+            console.log('successfully deleted!');
+        }
+    });
 
     const msg = {
         from:user,
-        // from: 'babakjahangiri123@gmail.com',
-        // to: 'babak_jahangiry@yahoo.com',
         subject: 'Hemenis ile Hemenis',
         html:emailBody
     };
     const emailAddresses = req.body['email'].split(" ");
-    emailAddresses.forEach(to => {
-        msg.to = to;
+    emailAddresses.forEach(recipients => {
+        msg.to = recipients;
         transporter.sendMail(msg,(err,info)=>{
             if(err){
                 console.log(err);
@@ -59,18 +73,10 @@ app.post('/emails',upload.single('template'),(req,res)=>{
             }
         });
     });
-    console.log('password',password);
     
 
 
-    // transporter.sendMail(mailOptions,(err,info)=>{
-    //     if (err){
-    //         console.log(error);
-    //     }
-    //     else{
-    //         console.log(info);
-    //     }
-    // });
+    
 
 });
 
